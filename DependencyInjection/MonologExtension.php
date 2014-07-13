@@ -228,6 +228,22 @@ class MonologExtension extends Extension
             ));
             break;
 
+        case 'redis':
+            $server = 'tcp://' . $handler['redis']['host'] . ':' . $handler['redis']['port'];
+            $client = new Definition("%monolog.redis.client.class%", array(
+                $server,
+            ));
+            $clientId = uniqid('monolog.redis.client.');
+            $container->setDefinition($clientId, $client);
+
+            $definition->setArguments(array(
+                new Reference($clientId),
+                $handler['redis']['key'],
+                $handler['level'],
+                $handler['bubble'],
+            ));
+            break;
+
         case 'chromephp':
             $definition->setArguments(array(
                 $handler['level'],

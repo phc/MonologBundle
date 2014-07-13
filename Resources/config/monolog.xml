@@ -43,6 +43,8 @@
         <parameter key="monolog.handler.filter.class">Monolog\Handler\FilterHandler</parameter>
         <parameter key="monolog.handler.mongo.class">Monolog\Handler\MongoDBHandler</parameter>
         <parameter key="monolog.mongo.client.class">MongoClient</parameter>
+        <parameter key="monolog.handler.redis.class">Monolog\Handler\RedisHandler</parameter>
+        <parameter key="monolog.redis.client.class">Predis\Client</parameter>
 
     </parameters>
 
